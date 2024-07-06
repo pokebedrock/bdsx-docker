@@ -32,7 +32,7 @@ COPY --chmod=0755 ./bdsx.sh /root/bdsx.sh
 # COPY --chmod=0755 wine_bdsx.deb /root/wine_bdsx.deb
 RUN wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
 RUN dpkg --add-architecture i386 
-RUN apt-ge update
+RUN apt-get update
 
 # Stage 5
 WORKDIR /root
