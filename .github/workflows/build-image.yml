@@ -41,7 +41,7 @@ jobs:
       - name: Build and push Docker images
         run: |
           REPO_NAME=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
-          IMAGE_TAG=${{ env.VERSION }}
+          IMAGE_TAG=${{ env.GIT_SHA }}
           
           echo "Building and pushing $IMAGE_NAME with tags $IMAGE_TAG and latest"
           docker build -t ${{ env.REGISTRY }}/${REPO_NAME}:${IMAGE_TAG} -t ${{ env.REGISTRY }}/${REPO_NAME}:latest image
