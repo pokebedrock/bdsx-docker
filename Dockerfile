@@ -30,15 +30,15 @@ ENV WINEDEBUG=fixme-all
 COPY --chmod=0755 ./entrypoint.sh /root/entrypoint.sh
 COPY --chmod=0755 ./bdsx.sh /root/bdsx.sh
 # COPY --chmod=0755 wine_bdsx.deb /root/wine_bdsx.deb
+RUN mkdir -pm755 /etc/apt/keyrings
 RUN wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
 RUN dpkg --add-architecture i386 
-RUN apt-get update
 
 # Stage 5
 WORKDIR /root
 RUN dos2unix entrypoint.sh
 RUN dos2unix bdsx.sh
-RUN apt-get install wine64 wine32
+RUN apt install --install-recommends winehq-stable
 # RUN dpkg -i wine_bdsx.deb
 # RUN rm -f wine_bdsx.deb
 
