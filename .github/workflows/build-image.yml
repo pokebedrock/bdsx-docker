@@ -38,9 +38,6 @@ jobs:
         id: extract_version
         run: echo "GIT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
-      - name: Adjust permissions for entrypoint
-        run: chmod +x image/entrypoint.sh
-
       - name: Build and push Docker images
         run: |
           REPO_NAME=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
