@@ -1,4 +1,4 @@
-FROM amd64/ubuntu:22.04
+FROM ubuntu:22.04
 
 RUN apt update -y
 RUN apt upgrade -y
@@ -34,9 +34,9 @@ COPY --chmod=0755 ./bdsx.sh /root/bdsx.sh
 RUN mkdir -pm755 /etc/apt/keyrings && \
     wget -NP /etc/apt/keyrings https://dl.winehq.org/wine-builds/winehq.key && \
     wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources && \
-    dpkg --add-architecture i386 && \
-    apt update -y && \
-    apt install --install-recommends -y winehq-stable
+    dpkg --add-architecture i386
+RUN apt update -y 
+RUN apt install --install-recommends -y winehq-stable
 
 # Stage 6
 WORKDIR /root
