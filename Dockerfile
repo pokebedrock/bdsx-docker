@@ -17,7 +17,7 @@ RUN apt-get install nodejs -y
 WORKDIR /root/bdsx
 RUN git init
 RUN git config pull.ff only
-RUN git remote add upstream https://github.com/karikera/bdsx.git
+RUN git remote add upstream https://github.com/pokebedrock/bdsx
 
 # Stage 3
 ENV node_env=production
