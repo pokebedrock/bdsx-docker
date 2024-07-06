@@ -35,8 +35,8 @@ RUN mkdir -pm755 /etc/apt/keyrings && \
 wget -NP /etc/apt/keyrings https://dl.winehq.org/wine-builds/winehq.key && \
 wget -O /etc/apt/sources.list.d/winehq-jammy.sources https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources && \
 dpkg --add-architecture i386
-RUN apt update -y 
-RUN apt install --install-recommends -y winehq-stable
+RUN sudo apt update -y 
+RUN sudo apt install --install-recommends -y winehq-stable
 
 # Stage 6
 WORKDIR /root
