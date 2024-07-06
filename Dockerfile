@@ -29,20 +29,23 @@ ENV WINEDEBUG=fixme-all
 # Stage 4
 COPY --chmod=0755 ./entrypoint.sh /root/entrypoint.sh
 COPY --chmod=0755 ./bdsx.sh /root/bdsx.sh
-# COPY --chmod=0755 wine_bdsx.deb /root/wine_bdsx.deb
-RUN mkdir -pm755 /etc/apt/keyrings
-RUN wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
-RUN dpkg --add-architecture i386 
 
 # Stage 5
+RUN mkdir -pm755 /etc/apt/keyrings && \
+    wget -NP /etc/apt/keyrings https://dl.winehq.org/wine-builds/winehq.key && \
+    wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources && \
+    dpkg --add-architecture i386 && \
+    apt update -y && \
+    apt install --install-recommends -y winehq-stable
+
+# Stage 6
 WORKDIR /root
 RUN dos2unix entrypoint.sh
 RUN dos2unix bdsx.sh
-RUN apt install --install-recommends winehq-stable
 # RUN dpkg -i wine_bdsx.deb
 # RUN rm -f wine_bdsx.deb
 
-# Stage 6
+# Stage 7
 EXPOSE 19132
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
