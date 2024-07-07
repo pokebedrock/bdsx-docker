@@ -3,6 +3,7 @@ cd /root/bdsx
 if [ ! -d ./bdsx ]
 then
     git fetch upstream
+    git reset --hard upstream/master
     git merge -X theirs upstream/master
 fi
 
