@@ -42,7 +42,7 @@ COPY --chmod=0755 bin/* /usr/local/bin/
 # RUN sed -i s@/usr/share/keyrings/@/etc/apt/keyrings/@ /etc/apt/sources.list.d/winehq-jammy.sources
 RUN dpkg --add-architecture i386
 RUN apt update -y
-RUN apt install --install-recommends -y winehq-stable
+RUN apt install wine64 wine32
 
 # Stage 6
 WORKDIR /root
