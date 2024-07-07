@@ -8,5 +8,6 @@ rm ./bedrock_server/bdsx_shell_data.ini >/dev/null 2>/dev/null
 
 # launch
 clear
-cd /usr/local/bin/wine
-./wine /root/bdsx/bedrock_server/bedrock_server.exe /root/bdsx
+# cd /usr/local/bin/wine
+# ./wine /root/bdsx/bedrock_server/bedrock_server.exe /root/bdsx
+wine /root/bdsx/bedrock_server/bedrock_server.exe /root/bdsx
