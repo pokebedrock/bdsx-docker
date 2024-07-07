@@ -2,7 +2,8 @@
 cd /root/bdsx
 if [ ! -d ./bdsx ]
 then
-    git pull upstream master --rebase
+    git fetch upstream
+    git merge -X theirs upstream/master
 fi
 
 cd /root/bdsx
