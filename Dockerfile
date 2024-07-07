@@ -39,7 +39,7 @@ wget -O /etc/apt/sources.list.d/winehq-jammy.sources https://dl.winehq.org/wine-
 dpkg --add-architecture i386
 RUN apt-key add /etc/apt/keyrings/winehq.key 
 RUN add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ jammy main'
-RUN apt-get update -y 
+RUN apt upgrade -y
 RUN apt install --install-recommends -y winehq-stable
 
 # Stage 6
