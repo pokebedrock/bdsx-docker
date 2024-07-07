@@ -9,7 +9,9 @@ RUN apt install -y \
                 libfreetype6 \
                 libfreetype-dev \
                 libunwind8 \
-                wget
+                wget \
+                software-properties-common
+
 RUN curl -sL https://deb.nodesource.com/setup_20.x -o /tmp/nodesource_setup.sh
 RUN bash /tmp/nodesource_setup.sh
 RUN apt-get install nodejs -y
