@@ -34,12 +34,13 @@ COPY --chmod=0755 ./bdsx.sh /root/bdsx.sh
 COPY --chmod=0755 bin/* /usr/local/bin/
 
 # Stage 5
-RUN mkdir -pm755 /etc/apt/keyrings && \
-wget -NP /etc/apt/keyrings https://dl.winehq.org/wine-builds/winehq.key && \
-wget -O /etc/apt/sources.list.d/winehq-jammy.sources https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources && \
-dpkg --add-architecture i386
-RUN add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ jammy main'
-RUN sed -i s@/usr/share/keyrings/@/etc/apt/keyrings/@ /etc/apt/sources.list.d/winehq-jammy.sources
+# RUN mkdir -pm755 /etc/apt/keyrings && \
+# wget -NP /etc/apt/keyrings https://dl.winehq.org/wine-builds/winehq.key && \
+# wget -O /etc/apt/sources.list.d/winehq-jammy.sources https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources && \
+# dpkg --add-architecture i386
+# RUN add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ jammy main'
+# RUN sed -i s@/usr/share/keyrings/@/etc/apt/keyrings/@ /etc/apt/sources.list.d/winehq-jammy.sources
+RUN dpkg --add-architecture i386
 RUN apt update -y
 RUN apt install --install-recommends -y winehq-stable
 

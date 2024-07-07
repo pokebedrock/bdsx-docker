@@ -2,7 +2,7 @@
 cd /root/bdsx
 if [ ! -d ./bdsx ]
 then
-    git pull upstream master
+    git pull upstream master --rebase
 fi
 
 cd /root/bdsx
